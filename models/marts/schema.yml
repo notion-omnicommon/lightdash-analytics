@@ -6,120 +6,37 @@ models:
     columns:
       - name: date
         description: "Date of performance"
-        meta:
-          dimension:
-            type: date
-            
       - name: platform
         description: "Ad platform (Google Ads or Meta Ads)"
-        meta:
-          dimension:
-            type: string
-            
       - name: total_clicks
         description: "Total clicks for the day"
-        meta:
-          metrics:
-            sum_clicks:
-              type: sum
-              
       - name: total_impressions
         description: "Total impressions"
-        meta:
-          metrics:
-            sum_impressions:
-              type: sum
-              
       - name: total_spend
         description: "Total ad spend"
-        meta:
-          metrics:
-            sum_spend:
-              type: sum
-              round: 2
-              
       - name: total_conversions
         description: "Total conversions"
-        meta:
-          metrics:
-            sum_conversions:
-              type: sum
-              
       - name: avg_ctr
-        description: "Average CTR"
-        meta:
-          metrics:
-            avg_click_through_rate:
-              type: average
-              round: 2
-              
+        description: "Average click-through rate"
       - name: avg_cpc
         description: "Average cost per click"
-        meta:
-          metrics:
-            avg_cost_per_click:
-              type: average
-              round: 2
-              
       - name: cost_per_conversion
         description: "Cost per conversion"
-        meta:
-          metrics:
-            avg_cost_per_conversion:
-              type: average
-              round: 2
-              
       - name: conversion_rate
         description: "Conversion rate percentage"
-        meta:
-          metrics:
-            avg_conversion_rate:
-              type: average
-              round: 2
 
   - name: revenue_summary
     description: "Daily revenue and order metrics"
     columns:
       - name: date
         description: "Order date"
-        meta:
-          dimension:
-            type: date
-            
       - name: total_orders
         description: "Number of orders"
-        meta:
-          metrics:
-            sum_orders:
-              type: sum
-              
       - name: total_revenue
         description: "Total revenue"
-        meta:
-          metrics:
-            sum_revenue:
-              type: sum
-              round: 2
-              
       - name: avg_order_value
         description: "Average order value"
-        meta:
-          metrics:
-            avg_order_val:
-              type: average
-              round: 2
-              
       - name: unique_customers
         description: "Number of unique customers"
-        meta:
-          metrics:
-            sum_unique_customers:
-              type: sum
-              
       - name: revenue_per_customer
         description: "Revenue per customer"
-        meta:
-          metrics:
-            avg_revenue_per_customer:
-              type: average
-              round: 2
