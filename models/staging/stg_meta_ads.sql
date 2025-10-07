@@ -13,17 +13,17 @@ SELECT
     
     -- Calculated metrics
     CASE 
-        WHEN clicks > 0 THEN ROUND(spend / clicks, 2)
+        WHEN clicks > 0 THEN ROUND((spend / clicks)::numeric, 2)
         ELSE 0 
     END as cost_per_click,
     
     CASE 
-        WHEN impressions > 0 THEN ROUND((clicks::FLOAT / impressions) * 100, 2)
+        WHEN impressions > 0 THEN ROUND((clicks::numeric / impressions * 100)::numeric, 2)
         ELSE 0 
     END as click_through_rate,
     
     CASE 
-        WHEN conversions > 0 THEN ROUND(spend / conversions, 2)
+        WHEN conversions > 0 THEN ROUND((spend / conversions)::numeric, 2)
         ELSE 0 
     END as cost_per_conversion
     
