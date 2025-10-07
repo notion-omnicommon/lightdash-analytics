@@ -2,18 +2,71 @@ version: 2
 
 models:
   - name: stg_google_ads
-    description: "Google Ads staging data"
+    description: "Staging model for Google Ads with calculated metrics"
     columns:
+      - name: id
+        description: "Unique identifier"
       - name: campaign_name
-        meta:
-          dimension:
-            type: string
+        description: "Campaign name"
+      - name: ad_group
+        description: "Ad group name"
       - name: date
-        meta:
-          dimension:
-            type: date
+        description: "Date of the ad data"
       - name: clicks
-        meta:
-          metrics:
-            total_clicks:
-              type: sum
+        description: "Total clicks"
+      - name: impressions
+        description: "Total impressions"
+      - name: cost
+        description: "Total cost"
+      - name: conversions
+        description: "Total conversions"
+      - name: cost_per_click
+        description: "Cost per click"
+      - name: click_through_rate
+        description: "Click through rate percentage"
+      - name: cost_per_conversion
+        description: "Cost per conversion"
+
+  - name: stg_shopify_orders
+    description: "Staging model for Shopify orders"
+    columns:
+      - name: id
+        description: "Unique identifier"
+      - name: order_id
+        description: "Order ID"
+      - name: customer_email
+        description: "Customer email"
+      - name: total_price
+        description: "Order total price"
+      - name: order_date
+        description: "Order timestamp"
+      - name: order_date_only
+        description: "Order date only"
+      - name: status
+        description: "Order status"
+
+  - name: stg_meta_ads
+    description: "Staging model for Meta Ads with calculated metrics"
+    columns:
+      - name: id
+        description: "Unique identifier"
+      - name: campaign_name
+        description: "Campaign name"
+      - name: ad_set_name
+        description: "Ad set name"
+      - name: date
+        description: "Date of the ad data"
+      - name: clicks
+        description: "Total clicks"
+      - name: impressions
+        description: "Total impressions"
+      - name: spend
+        description: "Total spend"
+      - name: conversions
+        description: "Total conversions"
+      - name: cost_per_click
+        description: "Cost per click"
+      - name: click_through_rate
+        description: "Click through rate percentage"
+      - name: cost_per_conversion
+        description: "Cost per conversion"
