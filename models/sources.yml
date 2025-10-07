@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: public
+    description: Raw data from n8n workflows
+    schema: public
+    tables:
+      - name: google_ads_raw
+        description: Raw Google Ads campaign data
+        
+      - name: shopify_orders_raw
+        description: Raw Shopify order data
+        
+      - name: meta_ads_raw
+        description: Raw Meta (Facebook) Ads campaign data
