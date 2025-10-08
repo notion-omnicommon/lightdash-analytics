@@ -21,9 +21,7 @@ models:
     # Models in staging folder
     staging:
       +materialized: view
-      +schema: analytics
     
     # Models in marts folder  
     marts:
       +materialized: table
-      +schema: analytics
