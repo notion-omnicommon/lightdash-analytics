@@ -1,6 +1,5 @@
 -- Staging model for Meta Ads data
--- Adds calculated metrics
-
+-- Adds calculated metrics like CPC and CTR
 SELECT 
     id,
     campaign_name,
@@ -13,18 +12,18 @@ SELECT
     
     -- Calculated metrics
     CASE 
-        WHEN clicks > 0 THEN ROUND((spend / clicks)::numeric, 2)
+        WHEN clicks > 0 THEN ROUND(spend / clicks, 2)
         ELSE 0 
     END as cost_per_click,
     
     CASE 
-        WHEN impressions > 0 THEN ROUND((clicks::numeric / impressions * 100)::numeric, 2)
+        WHEN impressions > 0 THEN ROUND(CAST(clicks AS FLOAT64) / impressions * 100, 2)
         ELSE 0 
     END as click_through_rate,
     
     CASE 
-        WHEN conversions > 0 THEN ROUND((spend / conversions)::numeric, 2)
+        WHEN conversions > 0 THEN ROUND(spend / conversions, 2)
         ELSE 0 
     END as cost_per_conversion
     
-FROM {{ source('public', 'meta_ads_raw') }}
+FROM {{ source('raw_data', 'meta_ads_raw') }}

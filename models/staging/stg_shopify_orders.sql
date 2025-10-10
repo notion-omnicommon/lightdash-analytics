@@ -1,3 +1,4 @@
+
 -- Staging model for Shopify orders
 -- Filters for completed orders only
 
@@ -12,8 +13,8 @@ SELECT
     DATE(order_date) as order_date_only,
     EXTRACT(YEAR FROM order_date) as order_year,
     EXTRACT(MONTH FROM order_date) as order_month,
-    EXTRACT(DOW FROM order_date) as day_of_week,
+    EXTRACT(DAYOFWEEK FROM order_date) as day_of_week,
     created_at
     
-FROM {{ source('public', 'shopify_orders_raw') }}
+FROM {{ source('raw_data', 'shopify_orders_raw') }}
 WHERE status = 'completed'

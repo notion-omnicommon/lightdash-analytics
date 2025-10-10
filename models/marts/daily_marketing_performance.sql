@@ -9,8 +9,8 @@ WITH google_ads_daily AS (
         SUM(impressions) as total_impressions,
         SUM(cost) as total_spend,
         SUM(conversions) as total_conversions,
-        ROUND(AVG(click_through_rate)::numeric, 2) as avg_ctr,
-        ROUND(AVG(cost_per_click)::numeric, 2) as avg_cpc
+        ROUND(AVG(click_through_rate), 2) as avg_ctr,
+        ROUND(AVG(cost_per_click), 2) as avg_cpc
     FROM {{ ref('stg_google_ads') }}
     GROUP BY date
 ),
@@ -23,8 +23,8 @@ meta_ads_daily AS (
         SUM(impressions) as total_impressions,
         SUM(spend) as total_spend,
         SUM(conversions) as total_conversions,
-        ROUND(AVG(click_through_rate)::numeric, 2) as avg_ctr,
-        ROUND(AVG(cost_per_click)::numeric, 2) as avg_cpc
+        ROUND(AVG(click_through_rate), 2) as avg_ctr,
+        ROUND(AVG(cost_per_click), 2) as avg_cpc
     FROM {{ ref('stg_meta_ads') }}
     GROUP BY date
 ),
@@ -46,12 +46,12 @@ SELECT
     avg_cpc,
     CASE 
         WHEN total_conversions > 0 
-        THEN ROUND((total_spend / total_conversions)::numeric, 2)
+        THEN ROUND(total_spend / total_conversions, 2)
         ELSE 0 
     END as cost_per_conversion,
     CASE 
         WHEN total_clicks > 0 
-        THEN ROUND((total_conversions::numeric / total_clicks * 100)::numeric, 2)
+        THEN ROUND(CAST(total_conversions AS FLOAT64) / total_clicks * 100, 2)
         ELSE 0 
     END as conversion_rate
 FROM combined
