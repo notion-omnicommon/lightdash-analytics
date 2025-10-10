@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: raw_data
-    description: Raw data from n8n workflows
+    description: Raw data from n8n workflows.
     schema: analytics
     tables:
       - name: google_ads_raw
